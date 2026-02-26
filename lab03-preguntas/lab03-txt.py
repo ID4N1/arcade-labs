@@ -1,3 +1,4 @@
+puntuacion = 0
 lista_diccionarios = []
 def extraer_pregunta(pregunta: str)-> dict:
     partes = pregunta.split("|")
@@ -16,7 +17,7 @@ preguntas_txt = [
 "¿Cuál es la capital de España?|Madrid|Barcelona|Sevilla|Toledo",
 "¿Cuántos continentes hay?|5|7|6|3",
 "¿Qué lenguaje se usa para programar en Arcade?|Python|Java|JavaScript|C",
-"¿La tortilla de patata lleva cebolla?|Jamás|Si|No con excepciones|Tal vez",
+"¿La tortilla de patata lleva cebolla?|Si|Nunca|No con excepciones|Tal vez",
 ]
 
 for linea in preguntas_txt:
@@ -31,6 +32,14 @@ contador = 0
 while contador < tope:
     print(lista_diccionarios[contador]["pregunta"])
     print(lista_diccionarios[contador]["opciones"])
-    input(("Tu respuesta: "))
+    entrada = input(("Tu respuesta: "))
+    if entrada == lista_diccionarios[contador]["correcta"]:
+        print("Correcto!")
+        puntuacion += 5
+    else:
+        print("Eres tonto")
+        puntuacion -= 2
     
     contador += 1
+
+print("Tu puntuación es: ", puntuacion)
